@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aditya Aerpule - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #333;
+      color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-img {
+      width: 40px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .logo-img img {
+      width: 100%;
+      height: auto;
+    }
+
+    header .logo,
+    header nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin-right: 100px;
+    }
+
+    header nav a {
+      font-size: 1em;
+      padding: 10px;
+      transition: color 0.3s ease;
+    }
+
+    header nav a:hover {
+      color: #ff6b6b;
+    }
+
+    #hero {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to right, #ff6b6b, #f06595);
+      color: white;
+      text-align: center;
+      padding-top: 80px;
+    }
+
+    .hero-text {
+      animation: fadeIn 1s ease-out;
+    }
+
+    .hero-text h1 {
+      font-size: 4em;
+      margin-bottom: 20px;
+    }
+
+    .hero-text p {
+      font-size: 1.5em;
+      margin-bottom: 40px;
+    }
+
+    .hero-text button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #333;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero-text button:hover {
+      background-color: #555;
+    }
+
+    section {
+      padding: 100px 50px;
+      text-align: center;
+    }
+
+    section#about {
+      background-color: #ffffff;
+    }
+
+    section#about h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    section#about p {
+      font-size: 1.2em;
+      line-height: 1.5;
+    }
+
+    section#about img {
+      width: 200px;
+      height: auto;
+      border-radius: 50%;
+      margin: 20px auto;
+      display: block;
+      border: 5px solid #ff6b6b;
+    }
+
+    #skills {
+      padding: 100px 0;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+
+    #skills h2 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+      color: #333;
+    }
+
+    .skills-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .skills-list {
+      list-style-type: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .skills-list li {
+      background-color: #fff;
+      color: #333;
+      font-size: 1.2em;
+      padding: 12px 20px;
+      margin: 10px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .skills-list li:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    section#portfolio {
+      background-color: #f0f0f0;
+    }
+
+    section#portfolio h2 {
+      font-size: 2.5em;
+      margin-bottom: 50px;
+    }
+
+    .portfolio-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    .portfolio-item {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .portfolio-item .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .portfolio-item:hover {
+      transform: scale(1.05);
+    }
+
+    .portfolio-item:hover .overlay {
+      opacity: 1;
+    }
+
+    section#resume {
+      padding: 100px 50px;
+      text-align: center;
+      background-color: #f9f9f9;
+    }
+
+    section#resume h2 {
+      font-size: 2.5em;
+      margin-bottom: 50px;
+      color: #333;
+    }
+
+    section#resume p {
+      font-size: 1.2em;
+      line-height: 1.5;
+    }
+
+    section#resume button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    section#resume button:hover {
+      background-color: #f06595;
+    }
+
+    section#contact {
+      background-color: #333;
+      color: white;
+    }
+
+    section#contact h2 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    section#contact p {
+      margin-bottom: 40px;
+      font-size: 1.2em;
+    }
+
+    section#contact form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    section#contact form input,
+    section#contact form textarea {
+      width: 100%;
+      max-width: 600px;
+      padding: 10px;
+      font-size: 1em;
+      border: none;
+      border-radius: 5px;
+    }
+
+    section#contact form button {
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #ff6b6b;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    section#contact form button:hover {
+      background-color: #f06595;
+    }
+
+    footer {
+      padding: 20px 50px;
+      background-color: #222;
+      color: #aaa;
+      text-align: center;
+    }
+
+    footer .socials {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    footer .socials a {
+      color: white;
+      font-size: 1.5em;
+      transition: color 0.3s ease;
+    }
+
+    footer .socials a:hover {
+      color: #ff6b6b;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 15px 30px;
+      }
+
+      .hero-text h1 {
+        font-size: 3em;
+      }
+
+      .hero-text p {
+        font-size: 1.2em;
+      }
+
+      section {
+        padding: 80px 20px;
+      }
+
+      .portfolio-item {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      header {
+        padding: 10px 20px;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header nav ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5em;
+      }
+
+      .hero-text p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <img src="https://rb.gy/kbewsx" alt="Logo" class="logo-img">
+      Aditya Aerpule
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="hero">
+    <div class="hero-text">
+      <h1>Hi, I'm Aditya Aerpule</h1>
+      <p>A Creative Developer & Designer</p>
+      <button onclick="window.location.href='https://github.com/adityaaerpule?tab=repositories'">View My Work</button>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTTtqdUiIATx1igLz3s7eDlyJK4ifgKQif2g&s" alt="Profile Picture" style="border: 1px solid red;">
+    <p>I'm a highly motivated RGPV MCA graduate with a passion for technology and a strong work ethic. My diverse
+      background includes proficiency in Java, C, C++, HTML, and CSS, equipping me to build innovative and efficient
+      software solutions. I thrive on collaborating with others and am driven to stay updated with the latest industry
+      trends and developments.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-container">
+      <ul class="skills-list">
+        <li>Java</li>
+        <li>Java Swing</li>
+        <li>Java AWT</li>
+        <li>Spring Framework</li>
+        <li>HTML & CSS</li>
+        <li>JavaScript</li>
+        <li>MySQL</li>
+        <li>Problem Solving</li>
+        <li>Project Management</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <section id="portfolio">
+    <h2>Projects</h2>
+    <div class="portfolio-gallery">
+      <div class="portfolio-item">
+        <img src="https://rb.gy/pkizeu" alt="Number Guessing Game">
+        <div class="overlay">
+          <h3>Number Guessing Game</h3>
+          <p>A fun game developed using Java</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://rb.gy/pkizeu" alt="ATM Interface">
+        <div class="overlay">
+          <h3>ATM Interface</h3>
+          <p>An ATM Interface system built with Java</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://rb.gy/pkizeu" alt="Student Management System">
+        <div class="overlay">
+          <h3>Student Management System</h3>
+          <p>A management system developed using Java and MySQL</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://rb.gy/pkizeu" alt="Chat Application">
+        <div class="overlay">
+          <h3>Chat Application</h3>
+          <p>A real-time chat application built with Java</p>
+        </div>
+      </div>
+      <div class="portfolio-item">
+        <img src="https://rb.gy/pkizeu" alt="Currency Converter">
+        <div class="overlay">
+          <h3>Currency Converter</h3>
+          <p>A currency converter tool developed using Java</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="resume">
+    <h2>Resume</h2>
+    <p>Download my resume to learn more about my skills and experience.</p>
+    <button id="downloadButton">Download Resume</button>
+  </section>
+
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>If you have any questions or want to work together, feel free to reach out!</p>
+    <form action="https://formspree.io/f/myylbnwr" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="_replyto" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Aditya Aerpule. All rights reserved.</p>
+    <div class="socials">
+      <a href="https://github.com/adityaaerpule" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+      <a href="https://www.linkedin.com/in/aditya-aerpule-84a253215/" target="_blank" rel="noopener"><i
+          class="fab fa-linkedin"></i></a>
+      <a href="https://www.instagram.com/cod3r.aadi/" target="_blank" rel="noopener"><i
+          class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('downloadButton').addEventListener('click', function() {
+      // Replace the URL below with your actual PDF file URL
+      var pdfUrl = 'https://drive.google.com/file/d/1t4iih-sH8Z6kZ49vw-TrxBy6keoOsp46/view?usp=sharing';
+  
+      // Use a hidden link element to trigger the download
+      var link = document.createElement('a');
+      link.href = pdfUrl;
+      link.download = 'Aditya_Aerpule_Resume.pdf'; // Optional: Customize the downloaded file name
+      link.target = '_blank'; // Open the PDF in a new tab, if supported by the browser
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
+  </script>
+  
+</body>
+
+</html>

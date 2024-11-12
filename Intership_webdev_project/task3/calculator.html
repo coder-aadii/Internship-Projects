@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    :root {
+      --main-bg-color: #4CAF50;
+      --operator-bg-color: #ff6b6b;
+      --equal-bg-color: #ffca28;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+    }
+    .calculator {
+      width: 300px;
+      background-color: var(--main-bg-color);
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .calculator-screen {
+      width: 100%;
+      height: 60px;
+      background-color: #ddd;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: right;
+      padding: 10px;
+      font-size: 24px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    .calculator-buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 5px;
+    }
+    .calculator-button {
+      width: 100%;
+      height: 70px;
+      background-color: #333;
+      color: white;
+      font-size: 24px;
+      text-align: center;
+      line-height: 70px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .calculator-button:hover {
+      background-color: #555;
+    }
+    .calculator-button.operator {
+      background-color: var(--operator-bg-color);
+    }
+    .calculator-button.operator:hover {
+      background-color: #ff4747;
+    }
+    .calculator-button.equal {
+      background-color: var(--equal-bg-color);
+      grid-column: span 4;
+      height: 80px;
+      line-height: 80px;
+    }
+    .calculator-button.equal:hover {
+      background-color: #ffce47;
+    }
+    .calculator-button.double {
+      grid-column: span 2;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="calculator-screen" id="calculator-screen">0</div>
+    <div class="calculator-buttons">
+      <button class="calculator-button operator" onclick="handleButtonClick('AC')">AC</button>
+      <button class="calculator-button" onclick="handleButtonClick('DEL')">DEL</button>
+      <button class="calculator-button" onclick="handleButtonClick('+/-')">+/-</button>
+      <button class="calculator-button operator" onclick="handleButtonClick('÷')">÷</button>
+      <button class="calculator-button" onclick="handleButtonClick('7')">7</button>
+      <button class="calculator-button" onclick="handleButtonClick('8')">8</button>
+      <button class="calculator-button" onclick="handleButtonClick('9')">9</button>
+      <button class="calculator-button operator" onclick="handleButtonClick('*')">*</button>
+      <button class="calculator-button" onclick="handleButtonClick('4')">4</button>
+      <button class="calculator-button" onclick="handleButtonClick('5')">5</button>
+      <button class="calculator-button" onclick="handleButtonClick('6')">6</button>
+      <button class="calculator-button operator" onclick="handleButtonClick('-')">-</button>
+      <button class="calculator-button" onclick="handleButtonClick('1')">1</button>
+      <button class="calculator-button" onclick="handleButtonClick('2')">2</button>
+      <button class="calculator-button" onclick="handleButtonClick('3')">3</button>
+      <button class="calculator-button operator" onclick="handleButtonClick('+')">+</button>
+      <button class="calculator-button" onclick="handleButtonClick('%')">%</button>
+      <button class="calculator-button double" onclick="handleButtonClick('0')">0</button>
+      <button class="calculator-button" onclick="handleButtonClick('.')">.</button>
+      <button class="calculator-button equal" onclick="calculateResult()">=</button>
+    </div>
+  </div>
+
+  <script>
+    let currentInput = '0';
+
+    function handleButtonClick(value) {
+      switch (value) {
+        case 'AC':
+          currentInput = '0';
+          break;
+        case '+/-':
+          currentInput = currentInput.charAt(0) === '-' ? currentInput.slice(1) : '-' + currentInput;
+          break;
+        case '.':
+          if (!currentInput.includes('.')) {
+            currentInput += value;
+          }
+          break;
+        case '%':
+          currentInput = (parseFloat(currentInput) / 100).toString();
+          break;
+        case 'DEL':
+          currentInput = currentInput.length > 1 ? currentInput.slice(0, -1) : '0';
+          break;
+        default:
+          currentInput = currentInput === '0' ? value : currentInput + value;
+      }
+      document.getElementById('calculator-screen').innerText = currentInput;
+    }
+
+    function formatDisplay(num) {
+      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function calculateResult() {
+      try {
+        currentInput = currentInput.replace(/÷/g, '/').replace(/x/g, '*');
+        const result = eval(currentInput);
+        document.getElementById('calculator-screen').innerText = formatDisplay(result);
+        currentInput = result.toString();
+      } catch (error) {
+        document.getElementById('calculator-screen').innerText = 'Error';
+        currentInput = '0';
+      }
+    }
+  </script>
+</body>
+</html>

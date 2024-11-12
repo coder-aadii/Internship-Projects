@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fly Fitness Zone</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #a097fb;
+    }
+
+    header {
+      background-color: #2c3e50;
+      /* Darker color for header */
+      color: white;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: slideIn 1s ease-out;
+      /* Slide in animation */
+    }
+
+    header h1 {
+      font-size: 2em;
+      margin: 0;
+    }
+
+    header .logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+      overflow: hidden;
+    }
+
+    header .logo img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+
+    header nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    header nav li {
+      margin-right: 20px;
+    }
+
+    header nav li:last-child {
+      margin-right: 0;
+    }
+
+    header nav a {
+      text-decoration: none;
+      color: white;
+      transition: color 0.3s ease;
+      /* Smooth color transition */
+    }
+
+    header nav a:hover {
+      color: #e67e22;
+      /* Highlight color on hover */
+    }
+
+    .hero {
+      position: relative;
+      color: rgb(217, 210, 238);
+      padding: 80px 20px;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in;
+      /* Fade in animation */
+      text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://rb.gy/vr36h7');
+      background-size: cover;
+      background-position: center;
+      filter: blur(1.5px);
+      /* Adjust blur amount as needed */
+      z-index: -1;
+    }
+
+    .hero h2 {
+      font-size: 3em;
+      margin-bottom: 20px;
+      animation: bounceIn 1.2s ease-in-out;
+      /* Bounce in animation */
+    }
+
+    .hero p {
+      font-size: 1.2em;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .hero button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      cursor: pointer;
+      background-color: #e67e22;
+      color: white;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      /* Smooth background color transition */
+    }
+
+    .hero button:hover {
+      background-color: #d35400;
+      /* Darker on hover */
+    }
+
+    .about-us {
+      background-color: #ecf0f1;
+      padding: 50px;
+      animation: fadeInUp 1s ease-in;
+      /* Fade in up animation */
+    }
+
+    .about-us h3 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .about-us p {
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .about-us ul {
+      padding-left: 20px;
+      /* Add padding for list indentation */
+    }
+
+    .about-us ul li {
+      margin-bottom: 10px;
+    }
+
+    .services {
+      background-color: #bdc3c7;
+      padding: 50px;
+      display: flex;
+      flex-wrap: wrap;
+      /* Allow items to wrap */
+      justify-content: space-around;
+      align-items: center;
+      animation: fadeInUp 1s ease-in;
+      /* Fade in up animation */
+    }
+
+    .services .service {
+      text-align: center;
+      max-width: 250px;
+      margin-bottom: 20px;
+      /* Margin bottom for spacing */
+    }
+
+    .services .service h4 {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      color: #2c3e50;
+    }
+
+    .contact {
+      background-color: #34495e;
+      /* Darker background for contact section */
+      color: white;
+      padding: 50px;
+      text-align: center;
+      animation: fadeInUp 1s ease-in;
+      /* Fade in up animation */
+    }
+
+    .contact p {
+      margin-bottom: 20px;
+    }
+
+    .contact button {
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      cursor: pointer;
+      background-color: #e67e22;
+      color: white;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+      /* Smooth background color transition */
+    }
+
+    .contact button:hover {
+      background-color: #d35400;
+      /* Darker on hover */
+    }
+
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+     /* Responsive Styles */
+     @media (max-width: 768px) {
+      header nav ul {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+      }
+
+      header nav li {
+        margin: 5px 0;
+      }
+
+      .hero h2 {
+        font-size: 2.5em;
+      }
+
+      .hero p,
+      .about-us p,
+      .contact p {
+        font-size: 1em;
+      }
+
+      .services {
+        flex-direction: column;
+      }
+
+      .services .service {
+        margin-bottom: 10px;
+      }
+    }
+
+    /* Animations */
+    @keyframes slideIn {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes bounceIn {
+      /* ... animations omitted for brevity ... */
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 style="display: flex; align-items: center;">
+      <img src="https://i.ibb.co/zPn92R5/IMG-20240401-WA0005.jpg" alt="FFZ Logo" class="logo">
+      Fly Fitness Zone
+    </h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Page</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Testimonials</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Buy Now</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="hero">
+    <h2>Transform Your Health and Fitness Journey!</h2>
+    <p>Welcome to Fly Fitness Zone, your premier destination for achieving health and wellness goals. Whether you’re
+      looking to lose weight, gain muscle, or simply maintain a healthy lifestyle, we have the right programs and a
+      community to support you every step of the way.</p>
+    <button>READ MORE</button>
+    <a href="https://www.instagram.com/flyfitnesszone"><button>REQUEST A CONSULT</button></a>
+
+  </section>
+  <section class="about-us">
+    <h3>Discover Our Comprehensive Fitness Services</h3>
+    <p>At Fly Fitness Zone, we offer a variety of classes and training options tailored to meet your unique needs and
+      preferences. Our experienced trainers and instructors are dedicated to providing top-notch guidance and support in
+      the following areas:</p>
+    <ul>
+      <li><strong>Yoga:</strong> Enhance your flexibility, balance, and mental clarity through our diverse yoga sessions
+        designed for all levels.</li>
+      <li><strong>Zumba:</strong> Get your groove on and burn calories with our energetic and fun-filled Zumba classes,
+        perfect for all ages.</li>
+      <li><strong>Cardio Workouts:</strong> Boost your cardiovascular health and endurance with high-energy cardio
+        routines.</li>
+      <li><strong>Body Weight Training:</strong> Strengthen and tone your body using natural movements and exercises
+        without the need for equipment.</li>
+      <li><strong>Weight Training:</strong> Build muscle and increase strength with our structured weight training
+        programs tailored to your fitness level.</li>
+      <li><strong>Tabata:</strong> Experience the intensity of Tabata, a high-intensity interval training that maximizes
+        results in a short time.</li>
+      <li><strong>Specialized Programs:</strong> From weight loss to weight gain, our tailored programs cater to your
+        specific health and fitness goals.</li>
+    </ul>
+  </section>
+  <section id="benefits" class="services">
+    <div class="service">
+      <h4>Why Choose FFZ?</h4>
+      <p>Our certified trainers and instructors are passionate about helping you achieve your fitness aspirations.</p>
+    </div>
+    <div class="service">
+      <h4>Variety of Classes</h4>
+      <p>With a wide range of classes and programs, there’s something for everyone, no matter your fitness level.</p>
+    </div>
+    <div class="service">
+      <h4>Community and Support</h4>
+      <p>Join a vibrant community that motivates and supports each other in every step of the fitness journey.</p>
+    </div>
+    <div class="service">
+      <h4>State-of-the-Art Facilities</h4>
+      <p>Our center is equipped with the latest fitness technology and amenities to enhance your workout experience.</p>
+    </div>
+    <div class="service">
+      <h4>Flexible Membership</h4>
+      <p>We offer various membership plans to suit your schedule and budget.</p>
+    </div>
+  </section>
+  <section class="contact">
+    <h3>Get in Touch with Fly Fitness Zone</h3>
+    <p>Whether you have questions about our programs, want to schedule a visit, or need assistance with your membership,
+      we’re here to help. Reach out to us, and our friendly team will get back to you as soon as possible!</p>
+    <p>Email: support@flyfitnesszone.com</p>
+    <p>Phone: +91 1234567890</p>
+    <p>Address: 123 Fly Fitness Zone, Ujjain</p>
+    <button onclick="window.location.href='mailto:support@flyfitnesszone.com'">Contact Us Now</button>
+  </section>
+  <footer>
+    <p>&copy; 2024 Fly Fitness Zone. All rights reserved.</p>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAYA Mobiles - Your Ultimate Gadget Store</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Arial, sans-serif';
+            line-height: 1.6;
+            background-color: #b6e4f1;
+            color: #333;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #094b5d;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            padding: 0;
+        }
+
+        header nav ul li {
+            margin: 0 1rem;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+        }
+
+        header nav ul li a:hover {
+            color: #ff5722;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://img.freepik.com/premium-photo/mobile-phones-store-generative-ai_220873-21825.jpg?w=1060') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            min-height: 60vh;
+            position: relative;
+        }
+
+        .hero h2,
+        .hero p {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-in-out forwards;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-in-out forwards 0.5s;
+        }
+
+        .hero .btn {
+            background-color: #ff5722;
+            color: white;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+            opacity: 0;
+            animation: fadeInUp 1s ease-in-out forwards 1s;
+        }
+
+        .hero .btn:hover {
+            background-color: #e64a19;
+            transform: scale(1.05);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #094b5d;
+            position: relative;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: #4CAF50;
+            /* Replace with your desired background color */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(194, 175, 175, 0.1);
+            padding: 1rem;
+            max-width: 250px;
+            text-align: center;
+            color: white;
+            position: relative;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            overflow: hidden;
+            /* Ensures image doesn't overflow */
+        }
+
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card h3,
+        .product-card p {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .product-card img {
+            max-width: 100%;
+            border-radius: 10px;
+            transition: filter 0.3s ease-in-out;
+        }
+
+        .product-card:hover img {
+            filter: none;
+            /* Remove any existing filters */
+        }
+
+        .product-card h3 {
+            margin: 1rem 0;
+            color: #000000;
+            position: relative;
+            z-index: 1;
+        }
+
+        .product-card p {
+            color: #000000;
+            position: relative;
+            z-index: 1;
+        }
+
+
+        /* Specific Product Card Backgrounds */
+        .smartphone-card {
+            background-color: #ff9696;
+        }
+
+        .tablet-card {
+            background-color: #ff9696;
+        }
+
+        .laptop-card {
+            background-color: #ff9696;
+        }
+
+        .accessory-card {
+            background-color: #ff9696;
+        }
+
+        .service-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: #4CAF50;
+            /* Replace with desired background color */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            max-width: 300px;
+            /* Adjust as needed */
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            flex: 1 1 300px;
+            /* Equal width for all cards */
+        }
+
+        .service-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            object-fit: cover;
+            /* Ensures the image covers the entire container */
+            width: 100%;
+            /* Ensure the image takes up the entire width of the container */
+            height: 200px;
+            /* Adjust the height as needed to maintain a square aspect ratio */
+        }
+
+        .service-card h3 {
+            margin: 1rem 0;
+            color: #000000;
+            /* Adjust text color */
+        }
+
+        .service-card p {
+            color: #311111;
+            /* Adjust text color */
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+            /* White text shadow */
+        }
+
+        /* Specific Service Card Backgrounds */
+        .free-shipping {
+            background-color: #FF9800;
+            /* Change as needed */
+        }
+
+        .easy-returns {
+            background-color: #FF9800;
+            /* Change as needed */
+        }
+
+        .expert-support {
+            background-color: #FF9800;
+            /* Change as needed */
+        }
+
+        .fast-repair {
+            background-color: #FF9800;
+            /* Change as needed */
+        }
+
+
+        /* Contact Section */
+        .contact p {
+            margin-bottom: 1rem;
+        }
+
+        .contact address {
+            line-height: 1.5;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            position: bottom;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>RAYA Mobiles</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h2>Welcome to RAYA Mobiles</h2>
+        <p>Your One-Stop Shop for All Gadgets and Accessories!</p>
+        <a href="#products" class="btn">Shop Now</a>
+    </section>
+
+    <section id="products" class="section">
+        <h2>Our Products</h2>
+        <div class="product-grid">
+            <div class="product-card smartphone-card">
+                <a href="https://www.gadgets360.com/mobiles/smartphones" target="_blank">
+                    <img src="https://m-cdn.phonearena.com/images/article/64576-wide-two_1200/The-Best-Phones-to-buy-in-2024---our-top-10-list.jpg?1716206294"
+                        alt="Smartphones">
+                    <h3>Smartphones</h3>
+                    <p>From budget to flagship models.</p>
+                </a>
+            </div>
+            <div class="product-card tablet-card">
+                <a href="https://www.91mobiles.com/upcoming-tablets-in-india" target="_blank">
+                    <img src="https://udaipurkiran.com/wp-content/uploads/2024/07/Samsung-Galaxy-Tab-S10-Series.jpg"
+                        alt="Tablets">
+                    <h3>Tablets</h3>
+                    <p>Wide range of tablets for all needs.</p>
+                </a>
+            </div>
+            <div class="product-card laptop-card">
+                <a href="https://m.gsmarena.com/news.php3?sSearch=laptop" target="_blank">
+                    <img src="https://static.vecteezy.com/system/resources/previews/039/023/613/non_2x/ai-generated-abstract-laptop-on-fire-vibrant-colors-exploding-chaos-generated-by-ai-photo.jpg"
+                        alt="Laptops">
+                    <h3>Laptops</h3>
+                    <p>High performance and budget-friendly laptops.</p>
+                </a>
+            </div>
+            <div class="product-card accessory-card">
+                <a href="https://rb.gy/d9ix17" target="_blank">
+                    <img src="https://img.pikbest.com/wp/202347/laptop-tablet-blue-office-desk-featuring-digital-devices-including-mobile-phone-and-3d-illustration_9771170.jpg!w700wp"
+                        alt="Accessories">
+                    <h3>Accessories</h3>
+                    <p>All the accessories you need.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="section">
+        <h2>Our Services</h2>
+        <div class="service-grid">
+            <div class="service-card free-shipping">
+                <h3>Free Shipping</h3>
+                <p>On all orders above $50</p>
+                <img src="https://thumbs.dreamstime.com/b/free-shipping-icon-emblem-logo-brush-stroke-style-vector-flat-illustration-yellow-black-element-design-shops-web-192683053.jpg"
+                    alt="Free Shipping Icon">
+            </div>
+            <div class="service-card easy-returns">
+                <h3>Easy Returns</h3>
+                <p>30-day hassle-free return policy</p>
+                <img src="https://img.freepik.com/premium-vector/easy-returns-sign-label-delivery-service-vector-stock-illustration_100456-11336.jpg"
+                    alt="Easy Returns Icon">
+            </div>
+            <div class="service-card expert-support">
+                <h3>Expert Support</h3>
+                <p>The perfect tech solution</p>
+                <img src="https://www.shutterstock.com/shutterstock/photos/1975712075/display_1500/stock-vector-thin-line-insight-icon-with-group-of-people-and-black-bulb-outline-flat-trend-modern-logo-graphic-1975712075.jpg"
+                    alt="Expert Support Icon">
+            </div>
+            <div class="service-card fast-repair">
+                <h3>Fast Repair</h3>
+                <p>Skilled techniciansexceptional service.</p>
+                <img src="https://t3.ftcdn.net/jpg/05/08/17/96/360_F_508179650_d6Wnem0e2H83h9CXfvlXKs7Dr9GGAzjh.jpg"
+                    alt="Fast Repair Icon">
+            </div>
+        </div>
+    </section>
+
+
+    <section id="contact" class="section contact">
+        <h2>Contact Us</h2>
+        <p>Reach out for inquiries or visit our store.</p>
+        <address>
+            <p>123 Gadget Street, Tech City</p>
+            <p>Email: <a href="mailto:info@rayamobiles.com">info@rayamobiles.com</a></p>
+            <p>Phone: <a href="tel:+1234567890">+123 456 7890</a></p>
+        </address>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 RAYA Mobiles. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
